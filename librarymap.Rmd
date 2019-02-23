@@ -1,0 +1,38 @@
+---
+title: "Libraries of Chicago"
+author: "Christian Flessner"
+date: "February 23, 2019"
+output: html_document
+---
+
+```{r echo=FALSE}
+#load libraries
+library(httr)
+library(jsonlite)
+library(leaflet)
+
+#Data import
+libraries<-GET("https://data.cityofchicago.org/resource/psqp-6rmg.json")
+json<-content(libraries)
+lib<-fromJSON(toJSON(json))
+
+#create coordinates
+coor_list<-lib$location$coordinates
+xcoor<-sapply(coor_list,function(x)x[[1]])
+ycoor<-sapply(coor_list,function(x)x[[2]])
+coor<-data.frame(longitude=xcoor,latitude=ycoor)
+
+#create popups
+libname<-sapply(lib$name_, function(x)x[[1]])
+libsite<-sapply(lib$website, function(x)x[[1]])
+libhours<-sapply(lib$hours_of_operation, function(x)x[[1]])
+libfacts_prep<-paste("<b><a href='",libsite,"'>",libname,"</a></b>")
+libfacts<-paste(sep="<br/>", libfacts_prep, libhours)
+
+#create map
+my_map<-coor%>%leaflet %>%addTiles()%>%addMarkers(popup=libfacts)
+my_map
+
+```
+
+
