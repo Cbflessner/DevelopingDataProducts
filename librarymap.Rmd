@@ -1,5 +1,5 @@
 ---
-title: "Libraries of Chicago"
+title: "LeafletMap"
 author: "Christian Flessner"
 date: "February 23, 2019"
 output: html_document
