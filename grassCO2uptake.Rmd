@@ -1,0 +1,23 @@
+---
+title: "CO2 Uptake by Grass Species"
+author: "Christian Flessner"
+date: "March 3, 2019"
+output: html_document
+---
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+#load libraries
+library(dplyr)
+library(plotly)
+
+
+quebec<-CO2 %>% filter(Type=="Quebec")
+miss<-CO2 %>% filter(Type=="Mississippi")
+
+
+
+plot_ly(miss, x=~conc , y=~uptake, type="scatter" , color=~Treatment, 
+        mode="lines")%>% layout(title = 'Mississippi Grass')
+plot_ly(quebec, x=~conc, y=~uptake, type="scatter" , color=~Treatment, 
+        mode="lines")%>% layout(title = 'Quebec Grass')
+```
+
