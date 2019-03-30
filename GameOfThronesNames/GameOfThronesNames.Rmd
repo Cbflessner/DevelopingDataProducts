@@ -1,0 +1,57 @@
+---
+title: "Impact of Game of Thrones on US Baby Names"
+author: "Christian Flessner"
+date: "March 30, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Influence of Pop Culture
+
+Popular culture has grown in influence dramatcially in the last few years in many different realms including politicals and the American Identity.  One way we can see this influence is by the naming records of the Social Security Administration which shows an increase in names relating to popular movies and television shows.
+
+## Game of Thrones
+
+Perhaps the largest television phenomenon in recent memory is the HBO series "Game of Thrones" which will be finishing up its final season this year. This program has repeatedly set records for the largest amount of people tuning in and is omnipresent in pop culture media.
+
+## Our App
+
+This app seeks to quantify the affect pop culture is having on the American identity.  Using "Game of Thrones" as a case study it measures how many people have started naming their children after famous characters from the program.  Although it is currently specific to this one program it could be easily extended to other shows and types of media.
+
+```{r Tyrion, fig.height=3, fig.width=5,echo=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(RCurl)
+
+url<-getURL("https://raw.githubusercontent.com/Cbflessner/DevelopingDataProducts/gh-pages/usa_names_data.csv")
+names<-read.csv(text=url)
+
+note<-"First Season of Game 
+of Thrones Starts"
+
+Tyrion<-names%>%filter(name=="Tyrion")
+
+ggplot(data=Tyrion, aes(x=year, y=count))+
+        geom_bar(stat="identity",fill="firebrick4",color="gold3",size=1)+
+        xlim(1950,2020)+
+ggtitle("Tyrion")+
+geom_vline(xintercept=2011, 
+           color="black",size=1)+
+annotate("text",x=1998
+         ,y=9
+         ,label=note)+
+theme(plot.title = 
+              element_text(color="#666666"
+                           , face="bold"
+                           , size=32
+                           , hjust=0))
+```
+
+## Pop Culture Monitoring
+This app is ideally suited for people who want to keep an eye on what is becoming one of the most salient influencers of modern society.  From economist to political scientist everyone should seek to understand the roll pop culture is playing in our lives. 
+
+
+
