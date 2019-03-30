@@ -1,0 +1,8 @@
+Impact of Game of Thrones on US Baby Names
+
+The HBO show Game of Thrones has become a pop culture phenomenon and one of the most watched television shows of all time.
+The attached app invesigates its effects on baby names in the United States, based on information taken from the Social Security Administration.
+To safeguard privacy the Social Secuirty Administration restricts names to those with at least 5 occurances.  
+
+To use the app simply check one or multiple Game of Thrones characters names and see a historgram of how often the name has appeared across the
+years with an vertical line to indicate when the first season of Game of Thrones premiered.
